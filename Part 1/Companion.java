@@ -2,16 +2,13 @@
 // AUTHOR: Adam Brossman
 // STUDENT ID: 1208719261
 // FOR: CSE 360
-// SPECIFICATION:
-// DUE DATE: 3/4/2016
+// SPECIFICATION: Drives the Companion interface and allows calling animated gif's
+// DUE DATE: 9/8/2016
 //**************************************************************
-
-
 
 import java.awt.*;
 import java.net.*;
 import javax.swing.*;
-
 
 
 public class Companion extends JPanel
@@ -43,16 +40,17 @@ public class Companion extends JPanel
 	{
 		JPanel panel = new JPanel();
 
-		if(name.contains(".gif") != true)
+		if(name.contains(".gif") != true) //Ensures files are called with .gif extension
 		{
 			name= name +".gif";
 		}
 
-		ImageIcon icon = new ImageIcon(name);
+		ImageIcon icon = new ImageIcon(name); //Loads .gif into ImageIcon
 
-		Image image = icon.getImage();
-		Image newimg = image.getScaledInstance(height, width,  java.awt.Image.SCALE_DEFAULT); // scale it the smooth way
-		icon = new ImageIcon(newimg);
+		Image image = icon.getImage(); //Creates Image from Icon
+		Image newimg = image.getScaledInstance(height, width,  java.awt.Image.SCALE_DEFAULT); //Scales Image to specified height and width
+		
+		icon = new ImageIcon(newimg); //Conversts Image back to ImageIcon
 
 		JLabel copyLabel = new JLabel(icon);
 		panel.add(copyLabel);
