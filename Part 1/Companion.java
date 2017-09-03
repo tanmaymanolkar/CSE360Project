@@ -2,91 +2,95 @@
 // AUTHOR: Adam Brossman
 // STUDENT ID: 1208719261
 // FOR: CSE 360
-// SPECIFICATION: Drives the Companion interface and allows calling animated gif's
-// DUE DATE: 9/8/2016
+// SPECIFICATION:
+// DUE DATE: 3/4/2016
 //**************************************************************
+
+
 
 import java.awt.*;
 import java.net.*;
 import javax.swing.*;
+import java.nio.file.*;
 
 
 public class Companion extends JPanel
 {
 	private static JPanel name, happy, thinking, worry, sorry, master;
-	private static JLabel memberName;
+	private static JLabel memberName= new JLabel("Adam Brossman"), error= new JLabel("Error");
 
 	private static final int DEFHEIGHT = 300, DEFWIDTH = 300;
 
-	public static JPanel Companion()
+	public Companion()
 	{
 		master= new JPanel();
-		master.setLayout(new GridLayout(2,2));
 
-		happy= Happy();
-		thinking= Thinking();
-		worry= Worry();
-		sorry= Sorry();
+		happy=  Emote(DEFHEIGHT, DEFWIDTH, "Happy.gif");
+		thinking=  Emote(DEFHEIGHT, DEFWIDTH, "Thinking.gif");
+		worry=  Emote(DEFHEIGHT, DEFWIDTH, "Worry.gif");
+		sorry=  Emote(DEFHEIGHT, DEFWIDTH, "Sorry.gif");
 
-		master.add(happy);
-		master.add(thinking);
-		master.add(worry);
-		master.add(sorry);
+		//Name Panel
+		name= new JPanel();
+		name.add(memberName);
 
-		return master;
+		master.add(name);
+		setLayout(new BorderLayout());
+		add(master);
 	}
 
 	private static JPanel Emote(int height, int width, String name)
 	{
-		JPanel panel = new JPanel();
+		JPanel emotePanel = new JPanel();
 
-		if(name.contains(".gif") != true) //Ensures files are called with .gif extension
+		if(name.contains(".gif") != true)
 		{
 			name= name +".gif";
 		}
 
-		ImageIcon icon = new ImageIcon(name); //Loads .gif into ImageIcon
+		Path file = Paths.get(name);
 
-		Image image = icon.getImage(); //Creates Image from Icon
-		Image newimg = image.getScaledInstance(height, width,  java.awt.Image.SCALE_DEFAULT); //Scales Image to specified height and width
-		
-		icon = new ImageIcon(newimg); //Conversts Image back to ImageIcon
+		if (Files.exists(file))
+		{
+			ImageIcon icon = new ImageIcon(name);
 
-		JLabel copyLabel = new JLabel(icon);
-		panel.add(copyLabel);
+			Image image = icon.getImage();
+			Image newimg = image.getScaledInstance(height, width,  java.awt.Image.SCALE_DEFAULT); // scale it the smooth way
+			icon = new ImageIcon(newimg);
 
-		return panel;
+			JLabel copyLabel = new JLabel(icon);
+			emotePanel.add(copyLabel);
+		}
+		else
+		{
+			error.setText("Error: Media data not found");
+			emotePanel.add(error);
+		}
+		return emotePanel;
 	}
 
-	public static JPanel Happy()
+	public void Happy()
 	{
-		return Emote(DEFHEIGHT, DEFWIDTH, "Happy.gif");
+		master.removeAll();
+		master.add(happy);
 	}
 
-	public static JPanel Thinking()
+	public void Thinking()
 	{
-		return Emote(DEFHEIGHT, DEFWIDTH, "Thinking.gif");
+		master.removeAll();
+		master.add(thinking);
 	}
 
-	public static JPanel Worry()
+	public void Worry()
 	{
-		return Emote(DEFHEIGHT, DEFWIDTH, "Worry.gif");
+		master.removeAll();
+		master.add(worry);
 	}
 
-	public static JPanel Sorry()
+	public void Sorry()
 	{
-		return Emote(DEFHEIGHT, DEFWIDTH, "Sorry.gif");
+		master.removeAll();
+		master.add(sorry);
 	}
 
-	public JPanel Name()
-	{
-		return name;
-	}
-
-	public static void SetName(String nameIn)
-	{
-		name= new JPanel();
-		memberName= new JLabel(nameIn);
-		name.add(memberName);
-	}
 }
