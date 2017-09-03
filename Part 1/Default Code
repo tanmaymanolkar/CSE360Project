@@ -1,0 +1,4 @@
+		JLabel name = new JLabel("Tanmay Manolkar");
+		name.setFont(name.getFont().deriveFont(32f));
+		add(name, BorderLayout.CENTER);
+		
