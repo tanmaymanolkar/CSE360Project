@@ -1,33 +1,39 @@
-import java.awt.Dimension;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import javax.swing.*;
 
 public class Tutor extends JPanel {
-    
-    public static void main(String[] args) {
-        Tutor(1);
+
+	private static JPanel panel;
+	//private static JLabel meh= new JLabel ("Stuff");
+
+    Tutor() {
+		panel= new JPanel();
+
+		Tutor(1);
+
+        setLayout(new BorderLayout());
+		add(panel);
     }
-    
-    public static void Tutor(int state) {
-        
+
+    public void Tutor(int state) {
+
         if (state >= 1 || state <= 4) {
-           //JFrame frame = new JFrame();
-           
            JEditorPane editorPane = new JEditorPane();
            editorPane.setEditable(false);
-           
-           //frame.setVisible(true);
-           
-           //frame.add(editorPane);
-           
+
+
+
+           panel.add(editorPane);
+
            String fileName = "P" + state + ".html";
-           
+
            File file = new File(fileName);
-           
+
            java.net.URL url;
-           
+
            try {
                 url = file.toURI().toURL();
            }
@@ -35,7 +41,7 @@ public class Tutor extends JPanel {
                url = null;
                System.err.println("Error: Attempted to read bad URL");
            }
-           
+
            if(url != null) {
                try {
                    editorPane.setPage(url);
@@ -47,9 +53,9 @@ public class Tutor extends JPanel {
            else {
                System.err.println("Error: Couldn't find file");
            }
-           
+
            JScrollPane scrollPane = new JScrollPane(editorPane);
-           
+
            scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
            scrollPane.setPreferredSize(new Dimension(250,145));
            scrollPane.setMinimumSize(new Dimension(10,10));
