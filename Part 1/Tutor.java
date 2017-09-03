@@ -6,27 +6,35 @@ import javax.swing.*;
 
 public class Tutor extends JPanel {
     
-    public static void main(String[] args) throws MalformedURLException {
+    public static void main(String[] args) {
         Tutor(1);
     }
     
-    public static void Tutor(int state) throws MalformedURLException {
+    public static void Tutor(int state) {
         
         if (state >= 1 || state <= 4) {
-           JFrame frame = new JFrame();
+           //JFrame frame = new JFrame();
            
            JEditorPane editorPane = new JEditorPane();
            editorPane.setEditable(false);
            
-           frame.setVisible(true);
+           //frame.setVisible(true);
            
-           frame.add(editorPane);
+           //frame.add(editorPane);
            
            String fileName = "P" + state + ".html";
            
            File file = new File(fileName);
            
-           java.net.URL url = file.toURI().toURL();
+           java.net.URL url;
+           
+           try {
+                url = file.toURI().toURL();
+           }
+           catch (MalformedURLException e) {
+               url = null;
+               System.err.println("Error: Attempted to read bad URL");
+           }
            
            if(url != null) {
                try {
