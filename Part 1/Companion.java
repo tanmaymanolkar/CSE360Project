@@ -16,7 +16,7 @@ import java.nio.file.*;
 
 public class Companion extends JPanel
 {
-	private static JPanel name, happy, thinking, worry, sorry, master;
+	private static JPanel happy, thinking, worry, sorry, master;
 	private static JLabel memberName= new JLabel("Adam Brossman"), error= new JLabel("Error");
 
 	private static final int DEFHEIGHT = 300, DEFWIDTH = 300;
@@ -31,10 +31,9 @@ public class Companion extends JPanel
 		sorry=  Emote(DEFHEIGHT, DEFWIDTH, "Sorry.gif");
 
 		//Name Panel
-		name= new JPanel();
-		name.add(memberName);
+		memberName.setFont(memberName.getFont().deriveFont(32f));
+		master.add(memberName);
 
-		master.add(name);
 		setLayout(new BorderLayout());
 		add(master);
 	}
