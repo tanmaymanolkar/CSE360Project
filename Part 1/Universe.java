@@ -11,6 +11,8 @@ public class Universe extends JFrame{
     JPanel BR = new JPanel();
 
     Companion comp = new Companion();
+    Assessor assess = new Assessor();
+
 
 	private JLabel Adam = new JLabel("ADAM"), Kaitlyn = new JLabel("KAITLYN"), Tanmay = new JLabel("TANMAY"), Steven = new JLabel("STEVEN GARVERICK");
 
@@ -50,7 +52,7 @@ public class Universe extends JFrame{
         TL.setBorder(BorderFactory.createLineBorder(Color.black));
         TR.add(Kaitlyn, BorderLayout.CENTER);
         TR.setBorder(BorderFactory.createLineBorder(Color.black));
-        BL.add(Tanmay, BorderLayout.CENTER);
+        BL.add(assess, BorderLayout.CENTER);
         BL.setBorder(BorderFactory.createLineBorder(Color.black));
         BR.add(Steven, BorderLayout.CENTER);
         BR.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -70,6 +72,7 @@ public class Universe extends JFrame{
 	public void position1() {
 		Steven.setVisible(false);
 		comp.Happy();
+		assess.phase1();
 		invalidate();
 		validate();
 		repaint();
@@ -78,6 +81,7 @@ public class Universe extends JFrame{
 	public void position2() {
 		Steven.setVisible(false);
 		comp.Thinking();
+		assess.phase2();
 		invalidate();
 		validate();
 		repaint();
@@ -86,6 +90,7 @@ public class Universe extends JFrame{
 	public void position3() {
 		Steven.setVisible(false);
 		comp.Worry();
+		assess.phase3();
 		invalidate();
 		validate();
 		repaint();
@@ -94,6 +99,7 @@ public class Universe extends JFrame{
 	public void position4() {
 		Steven.setVisible(false);
 		comp.Sorry();
+		assess.phase4();
 		invalidate();
 		validate();
 		repaint();
