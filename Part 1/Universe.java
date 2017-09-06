@@ -1,3 +1,13 @@
+//**************************************************************
+// AUTHOR: Steven Garverick
+// STUDENT ID: 1207370329
+// FOR: CSE 360
+// SPECIFICATION: This is the Universe Class. It contains and
+// runs all other classes.
+// DUE DATE: 3/4/2016
+//**************************************************************
+
+
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
