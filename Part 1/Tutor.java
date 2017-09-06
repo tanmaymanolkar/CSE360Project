@@ -5,85 +5,82 @@ import javax.swing.*;
 
 public class Tutor extends JPanel {
 
-	private static JPanel panel;
-	//private static JLabel meh= new JLabel ("Stuff");
+    private static File file;
+    private static java.net.URL url;
+    private static JEditorPane editorPane;
+    private static JPanel panel;
+    private static JScrollPane scrollPane;
+    private static final JLabel NAME_LABEL = new JLabel("Kaitlyn DiLorenzo");
+    private static final JLabel ERROR_LABEL = new JLabel("Error");
 
-    Tutor() {
-		panel= new JPanel();
-
-		Tutor();
+    public  Tutor() {
+        editorPane = new JEditorPane();
+        panel = new JPanel();
+        scrollPane = new JScrollPane(editorPane);
+        
+        editorPane.setEditable(true);
+        
+        scrollPane.setPreferredSize(new Dimension(600, 450));
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        
+        NAME_LABEL.setFont(NAME_LABEL.getFont().deriveFont(32f));
+        panel.add(NAME_LABEL);
 
         setLayout(new BorderLayout());
-		add(panel);
+	add(panel);
     }
+    
+    private void setHTML(String fileName) {
+        file = new File(fileName);
 
-	public void Tutor() {
-		JEditorPane editorPane = new JEditorPane();
-		editorPane.setEditable(false);
-
-		File file = new File("P1.html");
-		java.net.URL url;
-
-		try {
-			url = file.toURI().toURL();
-		}
-		catch (MalformedURLException e) {
-			url = null;
-			System.err.println("Error: Attempted to read bad URL");
-		}
-
-
-		try
-		{
-			editorPane.setPage("http://www.google.com");
-		}
-		catch (IOException e)
-		{
-			editorPane.setContentType("text/html");
-			editorPane.setText("<html>Could not load http://www.google.com </html>");
-		}
-		 JScrollPane scrollPane = new JScrollPane(editorPane);
-		 panel.add(scrollPane);
-
-       /* if (state >= 1 || state <= 4) {
-
-
-
-
-           panel.add(editorPane);
-
-           String fileName = "P" + state + ".html";
-
-           File file = new File(fileName);
-
-           java.net.URL url;
-
-           try {
-                url = file.toURI().toURL();
-           }
-           catch (MalformedURLException e) {
-               url = null;
-               System.err.println("Error: Attempted to read bad URL");
-           }
-
-           if(url != null) {
-               try {
-                   editorPane.setPage(url);
-               }
-               catch (IOException e) {
-                   System.err.println("Error: Attempted to read bad URL");
-               }
-           }
-           else {
-               System.err.println("Error: Couldn't find file");
-           }
-
-           JScrollPane scrollPane = new JScrollPane(editorPane);
-
-           scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-           scrollPane.setPreferredSize(new Dimension(250,145));
-           scrollPane.setMinimumSize(new Dimension(10,10));
-        }*/
+	try {
+            url = file.toURI().toURL();
+	}
+	catch(MalformedURLException e) {
+            url = null;
+            
+            ERROR_LABEL.setText("Error: Could not open file");
+            scrollPane.add(ERROR_LABEL);
+            
+            return;
+	}
+        
+        try {
+            editorPane.setPage(url);
+        }
+        catch(IOException e) {
+            url = null;
+            
+            ERROR_LABEL.setText("Error: Could not open file");
+            scrollPane.add(ERROR_LABEL);
+            
+            return;
+        }
+        
+        editorPane.setVisible(true);
+        
+        panel.add(scrollPane);
+      
+        url = null;
     }
-
+    
+    public void phase1() {
+        panel.removeAll();
+        setHTML("P1.html");
+    }
+    
+    public void phase2() {
+        panel.removeAll();
+        setHTML("P2.html");
+    }
+    
+    public void phase3() {
+        panel.removeAll();
+        setHTML("P3.html");
+    }
+    
+    public void phase4() {
+        panel.removeAll();
+        setHTML("P4.html");
+    }
 }

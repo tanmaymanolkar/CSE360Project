@@ -5,15 +5,16 @@ import java.awt.*;
 
 public class Universe extends JFrame{
 
-	JPanel TL = new JPanel();	//Panels to hold Objects
+    JPanel TL = new JPanel();	//Panels to hold Objects
     JPanel TR = new JPanel();
     JPanel BL = new JPanel();
     JPanel BR = new JPanel();
 
     Companion comp = new Companion();
     Assessor assess = new Assessor();
+    Tutor tutor = new Tutor();
 
-	private JLabel Kaitlyn = new JLabel("KAITLYN"), Steven = new JLabel("Steven Garverick");
+	private JLabel Adam = new JLabel("ADAM"), Kaitlyn = new JLabel("KAITLYN"), Tanmay = new JLabel("TANMAY"), Steven = new JLabel("Steven Garverick");
 
 	public static void main(String[] args) {	//DRIVER
 		Universe x = new Universe();
@@ -21,7 +22,7 @@ public class Universe extends JFrame{
 	
 	public Universe(){
 
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	//Program exits when frame closes
+	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	//Program exits when frame closes
         setTitle("Project1");
         setSize(1200,900);
         setLocationRelativeTo(null);	//Frame in middle of screen
@@ -40,19 +41,16 @@ public class Universe extends JFrame{
         TopHalf.setLayout(new GridLayout(2,2));	//2X2 grid layout
 
 		// Set font sizes
+        Adam.setFont(Adam.getFont().deriveFont(32f));
         Kaitlyn.setFont(Kaitlyn.getFont().deriveFont(32f));
+        Tanmay.setFont(Tanmay.getFont().deriveFont(32f));
         Steven.setFont(Steven.getFont().deriveFont(32f));
 
-        //set panel colors
-        TL.setBackground(new Color(0,105,145));
-        TR.setBackground(new Color(0,105,145));
-        BL.setBackground(new Color(0,105,145));
-        BR.setBackground(new Color(0,105,145));
-        
+
         //ADD objects to corresponding spots on grid and set borders
         TL.add(comp, BorderLayout.CENTER);
         TL.setBorder(BorderFactory.createLineBorder(Color.black));
-        TR.add(Kaitlyn, BorderLayout.CENTER);
+        TR.add(tutor, BorderLayout.CENTER);
         TR.setBorder(BorderFactory.createLineBorder(Color.black));
         BL.add(assess, BorderLayout.CENTER);
         BL.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -73,8 +71,9 @@ public class Universe extends JFrame{
 
 	public void position1() {
 		Steven.setVisible(false);
-		assess.phase1();
 		comp.Happy();
+		assess.phase1();
+                tutor.phase1();
 		invalidate();
 		validate();
 		repaint();
@@ -82,8 +81,9 @@ public class Universe extends JFrame{
 
 	public void position2() {
 		Steven.setVisible(false);
-		assess.phase2();
 		comp.Thinking();
+		assess.phase2();
+                tutor.phase2();
 		invalidate();
 		validate();
 		repaint();
@@ -91,8 +91,9 @@ public class Universe extends JFrame{
 	
 	public void position3() {
 		Steven.setVisible(false);
-		assess.phase3();
 		comp.Worry();
+		assess.phase3();
+                tutor.phase3();
 		invalidate();
 		validate();
 		repaint();
@@ -100,8 +101,9 @@ public class Universe extends JFrame{
 
 	public void position4() {
 		Steven.setVisible(false);
-		assess.phase4();
 		comp.Sorry();
+		assess.phase4();
+                tutor.phase4();
 		invalidate();
 		validate();
 		repaint();
