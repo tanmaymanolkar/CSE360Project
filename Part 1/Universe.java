@@ -13,11 +13,10 @@ public class Universe extends JFrame{
     Companion comp = new Companion();
     Assessor assess = new Assessor();
 
-
-	private JLabel Adam = new JLabel("ADAM"), Kaitlyn = new JLabel("KAITLYN"), Tanmay = new JLabel("TANMAY"), Steven = new JLabel("STEVEN GARVERICK");
+	private JLabel Kaitlyn = new JLabel("KAITLYN"), Steven = new JLabel("Steven Garverick");
 
 	public static void main(String[] args) {	//DRIVER
-		universe x = new universe();
+		Universe x = new Universe();
 	}
 	
 	public Universe(){
@@ -41,12 +40,15 @@ public class Universe extends JFrame{
         TopHalf.setLayout(new GridLayout(2,2));	//2X2 grid layout
 
 		// Set font sizes
-        Adam.setFont(Adam.getFont().deriveFont(32f));
         Kaitlyn.setFont(Kaitlyn.getFont().deriveFont(32f));
-        Tanmay.setFont(Tanmay.getFont().deriveFont(32f));
         Steven.setFont(Steven.getFont().deriveFont(32f));
 
-
+        //set panel colors
+        TL.setBackground(new Color(0,105,145));
+        TR.setBackground(new Color(0,105,145));
+        BL.setBackground(new Color(0,105,145));
+        BR.setBackground(new Color(0,105,145));
+        
         //ADD objects to corresponding spots on grid and set borders
         TL.add(comp, BorderLayout.CENTER);
         TL.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -71,8 +73,8 @@ public class Universe extends JFrame{
 
 	public void position1() {
 		Steven.setVisible(false);
-		comp.Happy();
 		assess.phase1();
+		comp.Happy();
 		invalidate();
 		validate();
 		repaint();
@@ -80,8 +82,8 @@ public class Universe extends JFrame{
 
 	public void position2() {
 		Steven.setVisible(false);
-		comp.Thinking();
 		assess.phase2();
+		comp.Thinking();
 		invalidate();
 		validate();
 		repaint();
@@ -89,8 +91,8 @@ public class Universe extends JFrame{
 	
 	public void position3() {
 		Steven.setVisible(false);
-		comp.Worry();
 		assess.phase3();
+		comp.Worry();
 		invalidate();
 		validate();
 		repaint();
@@ -98,8 +100,8 @@ public class Universe extends JFrame{
 
 	public void position4() {
 		Steven.setVisible(false);
-		comp.Sorry();
 		assess.phase4();
+		comp.Sorry();
 		invalidate();
 		validate();
 		repaint();
