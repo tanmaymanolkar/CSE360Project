@@ -12,8 +12,9 @@ public class Universe extends JFrame{
 
     Companion comp = new Companion(new Color(0,105,145));
     Assessor assess = new Assessor();
+	Tutor tutor = new Tutor();
 
-	private JLabel Kaitlyn = new JLabel("KAITLYN"), Steven = new JLabel("Steven Garverick");
+	private JLabel Kaitlyn = new JLabel("Kaitlyn DiLorenzo"), Steven = new JLabel("Steven Garverick");
 
 	public static void main(String[] args) {	//DRIVER
 		Universe x = new Universe();
@@ -75,6 +76,7 @@ public class Universe extends JFrame{
 		Steven.setVisible(false);
 		assess.phase1();
 		comp.happy();
+		tutor.phase1();
 		refresh();
 	}
 
@@ -82,6 +84,7 @@ public class Universe extends JFrame{
 		Steven.setVisible(false);
 		assess.phase2();
 		comp.thinking();
+		tutor.phase2();
 		refresh();
 	}
 
@@ -89,6 +92,7 @@ public class Universe extends JFrame{
 		Steven.setVisible(false);
 		assess.phase3();
 		comp.worry();
+		tutor.phase3();
 		refresh();
 	}
 
@@ -96,6 +100,7 @@ public class Universe extends JFrame{
 		Steven.setVisible(false);
 		assess.phase4();
 		comp.sorry();
+		tutor.phase4();
 		refresh();
 	}
 
