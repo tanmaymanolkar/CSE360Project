@@ -16,80 +16,97 @@ import java.nio.file.*;
 
 public class Companion extends JPanel
 {
-	private static JPanel happy, thinking, worry, sorry, master;
+	private static Emote happy, thinking, worry, sorry;
 	private static JLabel memberName= new JLabel("Adam Brossman"), error= new JLabel("Error");
+	private static Color bgColor= new Color(238,238,238), glass = new Color (0,0,0,0);
 
 	private static final int DEFHEIGHT = 300, DEFWIDTH = 300;
 
+	//Counstructors
 	public Companion()
 	{
-		master= new JPanel();
+		companion();
+	}
 
-		happy=  Emote(DEFHEIGHT, DEFWIDTH, "Happy.gif");
-		thinking=  Emote(DEFHEIGHT, DEFWIDTH, "Thinking.gif");
-		worry=  Emote(DEFHEIGHT, DEFWIDTH, "Worry.gif");
-		sorry=  Emote(DEFHEIGHT, DEFWIDTH, "Sorry.gif");
+	public Companion(Color color)
+	{
+		bgColor= color;
+		companion();
+	}
+
+	// Constructing method, to be called by constructors
+	private void companion()
+	{
+		happy=  new Emote(DEFHEIGHT, DEFWIDTH, "Happy.gif", bgColor);
+		thinking= new Emote(DEFHEIGHT, DEFWIDTH, "Thinking.gif", bgColor);
+		worry= new Emote(DEFHEIGHT, DEFWIDTH, "Worry.gif", bgColor);
+		sorry= new Emote(DEFHEIGHT, DEFWIDTH, "Sorry.gif", bgColor);
 
 		//Name Panel
 		memberName.setFont(memberName.getFont().deriveFont(32f));
-		master.add(memberName);
+		add(memberName);
+		setBackground(glass);
 
-		setLayout(new BorderLayout());
-		add(master);
 	}
 
-	private static JPanel Emote(int height, int width, String name)
+	public void size(int height, int width)
 	{
-		JPanel emotePanel = new JPanel();
+		int newSize= 300;
+		if (height <= width)
+			newSize= height;
+		else if (width < height)
+			newSize= width;
 
-		if(name.contains(".gif") != true)
-		{
-			name= name +".gif";
-		}
-
-		Path file = Paths.get(name);
-
-		if (Files.exists(file))
-		{
-			ImageIcon icon = new ImageIcon(name);
-
-			Image image = icon.getImage();
-			Image newimg = image.getScaledInstance(height, width,  java.awt.Image.SCALE_DEFAULT); // scale it the smooth way
-			icon = new ImageIcon(newimg);
-
-			JLabel copyLabel = new JLabel(icon);
-			emotePanel.add(copyLabel);
-		}
-		else
-		{
-			error.setText("Error: Media data not found");
-			emotePanel.add(error);
-		}
-		return emotePanel;
+		happy= new Emote(newSize, newSize, "Happy.gif", bgColor);
+		thinking= new Emote(newSize, newSize, "Thinking.gif", bgColor);
+		worry= new Emote(newSize, newSize, "Worry.gif", bgColor);
+		sorry= new Emote(newSize, newSize, "Sorry.gif", bgColor);
 	}
 
-	public void Happy()
+
+	//Emote states
+	public void happy()
 	{
-		master.removeAll();
-		master.add(happy);
+		removeAll();
+		add(happy);
 	}
 
-	public void Thinking()
+	public void thinking()
 	{
-		master.removeAll();
-		master.add(thinking);
+		removeAll();
+		add(thinking);
 	}
 
-	public void Worry()
+	public void worry()
 	{
-		master.removeAll();
-		master.add(worry);
+		removeAll();
+		add(worry);
 	}
 
-	public void Sorry()
+	public void sorry()
 	{
-		master.removeAll();
-		master.add(sorry);
+		removeAll();
+		add(sorry);
 	}
 
+	//Phases for less descriptive calling
+	public void phase1()
+	{
+		happy();
+	}
+
+	public void phase2()
+	{
+		thinking();
+	}
+
+	public void phase3()
+	{
+		worry();
+	}
+
+	public void phase4()
+	{
+		sorry();
+	}
 }
