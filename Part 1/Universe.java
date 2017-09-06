@@ -40,8 +40,7 @@ public class Universe extends JFrame{
         JPanel TopHalf = new JPanel();	//Panel to hold other panels up top
         TopHalf.setLayout(new GridLayout(2,2));	//2X2 grid layout
 
-		// Set font sizes
-        Kaitlyn.setFont(Kaitlyn.getFont().deriveFont(32f));
+	// Set font sizes
         Steven.setFont(Steven.getFont().deriveFont(32f));
 
         //set panel colors
