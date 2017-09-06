@@ -14,7 +14,7 @@ public class Universe extends JFrame{
     Assessor assess = new Assessor();
 	Tutor tutor = new Tutor();
 
-	private JLabel Kaitlyn = new JLabel("Kaitlyn DiLorenzo"), Steven = new JLabel("Steven Garverick");
+	private JLabel Steven = new JLabel("Steven Garverick");
 
 	public static void main(String[] args) {	//DRIVER
 		Universe x = new Universe();
@@ -53,7 +53,7 @@ public class Universe extends JFrame{
         //ADD objects to corresponding spots on grid and set borders
         TL.add(comp, BorderLayout.CENTER);
         TL.setBorder(BorderFactory.createLineBorder(Color.black));
-        TR.add(Kaitlyn, BorderLayout.CENTER);
+        TR.add(tutor, BorderLayout.CENTER);
         TR.setBorder(BorderFactory.createLineBorder(Color.black));
         BL.add(assess, BorderLayout.CENTER);
         BL.setBorder(BorderFactory.createLineBorder(Color.black));
