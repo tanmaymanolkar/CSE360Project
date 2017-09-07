@@ -4,6 +4,7 @@
 //FOR CSE 360
 //SPECIFICATION:This is Assessor Class. 
 //It creates various UI input elements and provides some output.
+//version: 1.0
 //DUE DATA : 9/8/2017
 //------------------------------------------------------
 import java.awt.*;
@@ -76,9 +77,10 @@ public class Assessor extends JPanel{
    
 	public void phase4() {
 		removeAll();
-		JLabel l1 = new JLabel("enter text in textbox and then click submit");
+		JLabel l1 = new JLabel("enter text in textbox and then click enter or submit");
 		t1 = new JTextField("");
-		b4 = new JButton("submit");						//creation of a text field and a button with action listener connected
+		t1.addActionListener(act1);				//action listener for text field activated when enter is pressed 
+		b4 = new JButton("submit");			//creation of a text field and a button with action listener connected
 		b4.addActionListener(new buttonPressed());
 		add(l1);
 		add(t1);
@@ -93,7 +95,7 @@ public class Assessor extends JPanel{
 	public void phase1()
 	{
 		removeAll();
-		String[] str1 = {"Option 1","option 2","option 3"};		//creation of the combo boxes with action listener connected
+		String[] str1 = {"Option 1","Option 2","Option 3"};	//creation of the combo boxes with action listener connected
 
 		JComboBox<String> cb2 = new JComboBox<String>(str1);
 		cb2.addActionListener(new buttonPressed());												
@@ -106,7 +108,7 @@ public class Assessor extends JPanel{
 		removeAll();
 		cb1 = new JCheckBox[3];
 
-		for (int y=0;y<3;y++) {									// creation of check boxes with action listener with action listener connected
+		for (int y=0;y<3;y++) {				// creation of check boxes with action listener with action listener connected
 
 			cb1[y] = new JCheckBox();
 
@@ -131,9 +133,19 @@ public class Assessor extends JPanel{
 	}
 
 
+	Action act1 = new AbstractAction() {
+										//Showing message after enter is pressed in text field
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			JOptionPane.showMessageDialog(f2, "Hello World!");
+			t1.setText("");			
+		}
+	};
 
 
 
 
 
 }
+
+
