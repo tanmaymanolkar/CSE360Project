@@ -2,7 +2,7 @@
 // AUTHOR: Adam Brossman
 // STUDENT ID: 1208719261
 // FOR: CSE 360
-// SPECIFICATION:
+// SPECIFICATION: handles loading animated gif's so that they can be be displayed by the companion class
 // DUE DATE: 3/4/2016
 //**************************************************************
 
