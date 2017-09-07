@@ -2,11 +2,9 @@
 // AUTHOR: Adam Brossman
 // STUDENT ID: 1208719261
 // FOR: CSE 360
-// SPECIFICATION:
+// SPECIFICATION: holds objects of type Emote (animated gif's) to be displayed by the main program
 // DUE DATE: 3/4/2016
 //**************************************************************
-
-
 
 import java.awt.*;
 import java.net.*;
