@@ -2,16 +2,13 @@
 //Name : TANMAY MANOLKAR
 //Student Id : 1213188390
 //FOR CSE 360
-//SPECIFICATION:
+//SPECIFICATION:This is Assessor Class. 
+//It creates various UI input elements and provides some output.
 //DUE DATA : 9/8/2017
 //------------------------------------------------------
 import java.awt.*;
-
 import java.awt.event.ActionEvent;
-
 import java.awt.event.ActionListener;
-import java.lang.reflect.Field;
-
 import javax.swing.*;
 
 public class Assessor extends JPanel{
@@ -22,7 +19,7 @@ public class Assessor extends JPanel{
 
 	public JButton b1,b2,b3,b4;
 
-	public JTextField t1;
+	public JTextField t1;					//declarations
 
 	public JCheckBox[] cb1;
 	
@@ -38,7 +35,7 @@ public class Assessor extends JPanel{
 
 	public Assessor(){
 
-		createPanel();
+		createPanel();					//constructor
 
 	}
 
@@ -49,12 +46,11 @@ public class Assessor extends JPanel{
 		
 
 		
-		JLabel name = new JLabel("Tanmay Manolkar");
-		name.setFont(name.getFont().deriveFont(32f));
-        add(name, BorderLayout.CENTER);
-		
+		JLabel name = new JLabel("Tanmay Manolkar");			
+		name.setFont(name.getFont().deriveFont(32f));			//Constructor calls this function
+        add(name, BorderLayout.CENTER);							//initial display created 
 		setLayout(new GridLayout(4,3));
-
+		setBackground(new Color(0,0,0,0));
 
 		
 
@@ -64,7 +60,7 @@ public class Assessor extends JPanel{
 		
 		removeAll();
 		b1 = new JButton("option 1");
-		b2 = new JButton("option 2");
+		b2 = new JButton("option 2");						//creation of buttons with action listener connected
 		b3 = new JButton("option 3");
 		b1.addActionListener(new buttonPressed());
 		b2.addActionListener(new buttonPressed());
@@ -82,7 +78,7 @@ public class Assessor extends JPanel{
 		removeAll();
 		JLabel l1 = new JLabel("enter text in textbox and then click submit");
 		t1 = new JTextField("");
-		b4 = new JButton("submit");
+		b4 = new JButton("submit");						//creation of a text field and a button with action listener connected
 		b4.addActionListener(new buttonPressed());
 		add(l1);
 		add(t1);
@@ -97,10 +93,10 @@ public class Assessor extends JPanel{
 	public void phase1()
 	{
 		removeAll();
-		String[] str1 = {"Option 1","option 2","option 3"};
+		String[] str1 = {"Option 1","option 2","option 3"};		//creation of the combo boxes with action listener connected
 
 		JComboBox<String> cb2 = new JComboBox<String>(str1);
-		cb2.addActionListener(new buttonPressed());
+		cb2.addActionListener(new buttonPressed());												
 		add(cb2);
 		
 		
@@ -110,7 +106,7 @@ public class Assessor extends JPanel{
 		removeAll();
 		cb1 = new JCheckBox[3];
 
-		for (int y=0;y<3;y++) {
+		for (int y=0;y<3;y++) {									// creation of check boxes with action listener with action listener connected
 
 			cb1[y] = new JCheckBox();
 
@@ -124,7 +120,7 @@ public class Assessor extends JPanel{
 	}
 	class buttonPressed implements ActionListener{
 
-		 public void actionPerformed(ActionEvent e) {
+		 public void actionPerformed(ActionEvent e) {			//Action listener defined
 
 			 JOptionPane.showMessageDialog(f2, "Hello World!");
 				t1.setText("");
