@@ -18,7 +18,7 @@ public class Universe extends JFrame{
     	JPanel BL = new JPanel();
     	JPanel BR = new JPanel();
 
-    	Companion comp = new Companion();	//Create Objects to put in panels
+    	Companion comp = new Companion(new Color(255,198,39));	//Create Objects to put in panels
     	Assessor assess = new Assessor();
     	Tutor tut = new Tutor();
 
