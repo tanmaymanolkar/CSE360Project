@@ -39,7 +39,7 @@ public class Emote extends JPanel
 		{
 			name= name +".gif";
 		}
-		name= "../resources/" + name;
+		name= "resources/" + name;
 
 		Path file = Paths.get(name);
 
