@@ -54,7 +54,7 @@ public class Tutor extends JPanel {
 
     //Open HTML file
     private void setHTML(String fileName) {
-        file = new File("../resources/" + fileName);
+        file = new File("resources/" + fileName);
 
 	try {
             url = file.toURI().toURL();
